@@ -2,9 +2,9 @@
 //  ExerciseSetDetailView.swift
 //  InstaGym
 //
-//  Created by Rodrigo Casado on 30.11.2024.
+//  Copyright © 2025 Rodrigo Casado. All rights reserved.
+//  Licensed under the MIT License. See LICENSE for details.
 //
-
 import SwiftUI
 import Foundation
 

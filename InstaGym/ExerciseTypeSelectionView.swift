@@ -1,10 +1,10 @@
 //
-//  ExerciseTypeSelectionView.swift.swift
+//  ExerciseTypeSelectionView.swift
 //  InstaGym
 //
-//  Created by Rodrigo Casado on 03.12.2024.
+//  Copyright © 2025 Rodrigo Casado. All rights reserved.
+//  Licensed under the MIT License. See LICENSE for details.
 //
-
 import SwiftData
 import SwiftUI
 
