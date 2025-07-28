@@ -5,20 +5,48 @@
 //  Created by Rodrigo Casado on 25.11.2024.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
+    @State var pathStorage = PathStorage()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack(path: $pathStorage.path) {
+            WorkoutListView()
+                .environment(pathStorage)
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    PreviewControl.start().wrap(ContentView())
+}
+
+@MainActor
+class PreviewControl {
+    static var workouts = [Workout]()
+    static var container: ModelContainer? = nil
+    
+    static func start() -> PreviewControl.Type {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        self.container = try! ModelContainer(for: Workout.self, configurations: config)
+        ExerciseType.insertDefaultTypes(container!.mainContext)
+        for _ in 0...9 {
+            workouts.append(Workout.insertMock(container!.mainContext))
+        }
+        return PreviewControl.self
+    }
+    
+    static func wrap(_ view: some View) -> some View {
+        return view.modelContainer(container!)
+    }
+    
+    @State static var pathStorage = PathStorage()
+    
+    static func wrapNav(_ view: some View) -> some View {
+//        pathStorage.clean()
+        return NavigationStack(path: $pathStorage.path) {
+            view.modelContainer(container!).environment(pathStorage)
+        }
+    }
 }

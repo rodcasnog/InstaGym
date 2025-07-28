@@ -5,6 +5,7 @@
 //  Created by Rodrigo Casado on 25.11.2024.
 //
 
+import SwiftData
 import SwiftUI
 
 @main
@@ -13,5 +14,7 @@ struct InstaGymApp: App {
         WindowGroup {
             ContentView()
         }
+//        .modelContainer(for: Workout.self)
+        .modelContainer(CustomContainer.create())
     }
 }
