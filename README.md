@@ -4,5 +4,6 @@
 
 iOS app to track your workouts. Next features:
  - UI overhaul.
+ - PathStorage to preserve state after closing.
  - Calendar implementation.
  - Share workouts with friends.
